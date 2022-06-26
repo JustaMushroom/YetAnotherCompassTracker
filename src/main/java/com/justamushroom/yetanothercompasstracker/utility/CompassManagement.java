@@ -23,7 +23,7 @@ public class CompassManagement {
 
         meta.setDisplayName(ChatColor.RESET + "Tracking Compass"); // Custom name
         meta.setLore(new ArrayList<String>() {{ // Custom "enchant" tooltip
-            add(ChatColor.RESET + "Tracking I");
+            add(ChatColor.GRAY + "Tracking I");
         }});
 
         // Add a useless enchant for the shimmer effect
