@@ -19,7 +19,7 @@ public class Teams {
 
         // Broadcast team change in chat if not done silently
         if (!silent) {
-            Bukkit.getServer().broadcastMessage(plr.getDisplayName() + " is now on team " + targetTeam.getColor() + targetTeam.getName() + ChatColor.RESET);
+            Bukkit.getServer().broadcastMessage(plr.getDisplayName() + " is now on team " + ChatColor.BOLD + targetTeam.getColor() + targetTeam.getName() + ChatColor.RESET);
         }
     }
 }
