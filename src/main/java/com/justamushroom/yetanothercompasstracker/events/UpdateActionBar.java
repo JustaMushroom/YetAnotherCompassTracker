@@ -33,6 +33,9 @@ public class UpdateActionBar implements Runnable {
 
                 // Display the action bar to the player
                 plr.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(display));
+
+                // Point the player's compass to the closest teammate
+                plr.setCompassTarget(closestTeammate.getLocation());
             }
         }
     }
