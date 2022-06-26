@@ -1,0 +1,22 @@
+name: Feature Request
+description: Request new features that could be implemented
+title: "[REQUEST]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "**Before submitting your feature request, please confirm that the feature has not already been requested!**"
+  - type: textarea
+    id: desc
+    attributes:
+      label: Feature Description
+      description: Please describe the suggested feature
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Feature Request Terms
+      options:
+        - label: I have checked and confirmed that this feature has not already been requested
+          required: true
