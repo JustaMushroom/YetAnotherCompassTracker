@@ -3,3 +3,9 @@ version: 1.0.0
 author: JustaMushroom
 main: com.justamushroom.yetanothercompasstracker.Main
 api-version: 1.18
+
+commands:
+  getcompass:
+    description: Claim a tracking compass
+    usage: /getcompass
+    aliases: [gt, compass]

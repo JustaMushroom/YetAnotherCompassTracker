@@ -1,5 +1,6 @@
 package com.justamushroom.yetanothercompasstracker;
 
+import com.justamushroom.yetanothercompasstracker.commands.GetCompassCMD;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -11,6 +12,7 @@ public class Main extends JavaPlugin {
 
     private void registerCommands()
     {
+        this.getCommand("getcompass").setExecutor(new GetCompassCMD()); // Register /getcompass
         Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.GREEN + "All Commands Registered!");
     }
 
