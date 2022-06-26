@@ -1,0 +1,5 @@
+name: YetAnotherCompassTracker
+version: 1.0.0
+author: JustaMushroom
+main: com.justamushroom.yetanothercompasstracker.Main
+api-version: 1.18
