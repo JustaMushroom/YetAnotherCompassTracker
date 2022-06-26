@@ -41,6 +41,7 @@ public class CompassManagement {
     }
 
     public static boolean isCompass(ItemStack item) {
+        if (item == null) return false;
         if (item.getType() != Material.COMPASS) return false; // Only compasses can have the tracking flag. No need to check further
 
         // Get item metadata
