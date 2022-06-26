@@ -3,10 +3,12 @@ package com.justamushroom.yetanothercompasstracker.utility;
 import com.justamushroom.yetanothercompasstracker.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
 import javax.annotation.Nullable;
+import java.util.*;
 
 public class Teams {
 
@@ -61,5 +63,39 @@ public class Teams {
         } catch (NullPointerException error) {
             return null;
         }
+    }
+
+    @Nullable
+    public static Player getClosestPlayerOfTeam(Player basePlayer) {
+        return getClosestPlayerOfTeam(getPlayerTeam(basePlayer), basePlayer);
+    }
+
+    // Get the closest player to basePlayer who is in matchTeam
+    // Returns the basePlayer if no matching teammates in matchTeam are found
+    public static Player getClosestPlayerOfTeam(Team matchTeam, Player basePlayer) {
+        if (matchTeam == null) return null; // Should only return under specific circumstances
+        Set<String> playerNames = matchTeam.getEntries(); // Get player names in the team
+
+        Player closestPlr = basePlayer; // Define the closest player and their distance
+        double distance = Double.MAX_VALUE;
+        Location baseLoc = basePlayer.getLocation(); // Get the basePlayer's location
+
+        for (String name : playerNames) { // Go through all the team members
+            Player plr = Bukkit.getPlayer(name);
+            if (plr == null) continue; // Doesn't Exist? Skip it
+
+            Location targetLoc = plr.getLocation();
+
+            // Not in the same world? Skip it
+            if (targetLoc.getWorld() != baseLoc.getWorld()) continue; // TODO: Add an argument to ignore this check
+
+            double distanceTo = baseLoc.distance(targetLoc); // Get the basePlayer's distance to the target
+
+            if (distanceTo < distance) { // If they are closer than the current closest, update it
+                distance = distanceTo;
+                closestPlr = plr;
+            }
+        }
+        return closestPlr; // Return the closest target, will return BasePlayer if no other valid teammates are found
     }
 }
