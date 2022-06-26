@@ -59,8 +59,19 @@ public class Teams {
     @Nullable
     public static Team getPlayerTeam(Player plr) {
         try {
-            return Bukkit.getScoreboardManager().getMainScoreboard().getEntryTeam(plr.getName());
-        } catch (NullPointerException error) {
+            // Get teams that are managed by the plugin
+            List<?> teams = Main.instance.getConfig().getList("teams.teamNames");
+
+            // Iterate over every team that the plugin manages
+            for (Object teamName : teams) {
+                // Search for the team object
+                Team team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(teamName.toString());
+
+                // If the player is in the team, return it
+                if (team.getEntries().contains(plr.getName())) return team;
+            }
+            return null; // If no team found, return null
+        } catch (NullPointerException error) { // If something goes wrong, return null
             return null;
         }
     }
@@ -84,7 +95,7 @@ public class Teams {
             Player plr = Bukkit.getPlayer(name);
             if (plr == null) continue; // Doesn't Exist? Skip it
 
-            Location targetLoc = plr.getLocation();
+            Location targetLoc = plr.getLocation(); // Get the location of the team member
 
             // Not in the same world? Skip it
             if (targetLoc.getWorld() != baseLoc.getWorld()) continue; // TODO: Add an argument to ignore this check
