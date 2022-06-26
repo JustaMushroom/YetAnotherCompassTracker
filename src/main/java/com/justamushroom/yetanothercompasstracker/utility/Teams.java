@@ -7,6 +7,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
 public class Teams {
+
+    // Overload of changePlayer team to make silent a non-required parameter
+    public static void changePlayerTeam(Player plr, Team targetTeam) {
+        changePlayerTeam(plr, targetTeam, false);
+    }
+
     //TODO: Add more error handling
     public static void changePlayerTeam(Player plr, Team targetTeam, boolean silent) {
         Team currentTeam = Bukkit.getScoreboardManager().getMainScoreboard().getEntryTeam(plr.getName()); // Get player's current team (if applicable)
