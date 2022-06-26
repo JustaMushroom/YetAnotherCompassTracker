@@ -95,9 +95,11 @@ public class Teams {
             Player plr = Bukkit.getPlayer(name);
             if (plr == null) continue; // Doesn't Exist? Skip it
 
+            if (!plr.isOnline()) continue; // Not online? Skip them
+
             Location targetLoc = plr.getLocation(); // Get the location of the team member
 
-            // Not in the same world? Skip it
+            // Not in the same world? Skip them
             if (targetLoc.getWorld() != baseLoc.getWorld()) continue; // TODO: Add an argument to ignore this check
 
             double distanceTo = baseLoc.distance(targetLoc); // Get the basePlayer's distance to the target
