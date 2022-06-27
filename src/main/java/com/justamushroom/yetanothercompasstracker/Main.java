@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends JavaPlugin {
@@ -32,7 +33,7 @@ public class Main extends JavaPlugin {
         // Initialize default options
         config.addDefault("commands.allowTeamSwap", true); // Allow team swapping by default
         config.addDefault("compass.allowRightClick", true); // Allow compasses to be right-clicked
-        config.addDefault("teams.teamNames", new String[]{}); // List of team names in the scoreboard, there's probably a better way to store this data
+        config.addDefault("teams.teamNames", new ArrayList<String>()); // List of team names in the scoreboard, there's probably a better way to store this data
         config.addDefault("teams.allowActionBarTracking", true); // Allows the action bar to be used to track teammates
 
         // Copy default
