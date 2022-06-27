@@ -14,6 +14,7 @@ public class TabCompletion implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] arguments) {
         if (cmd.getName().equalsIgnoreCase("changeteam")) {
+            if (arguments.length > 1) return null;
             return Lists.transform(Main.instance.getConfig().getList("teams.teamNames"), Functions.toStringFunction());
         }
         return null;
