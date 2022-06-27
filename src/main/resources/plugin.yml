@@ -14,3 +14,8 @@ commands:
     description: Change your tracking team
     usage: /changeteam <New Team>
     aliases: [ct, team]
+
+  settings:
+    description: change the plugin settings
+    usage: /settings <setting> <value>
+    permission: op
