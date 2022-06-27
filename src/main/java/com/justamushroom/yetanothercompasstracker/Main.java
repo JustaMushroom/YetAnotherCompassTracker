@@ -22,6 +22,8 @@ public class Main extends JavaPlugin {
         this.getCommand("getcompass").setExecutor(new GetCompassCMD()); // Register /getcompass
         this.getCommand("changeteam").setExecutor(new TeamChangeCMD()); // Register /changeteam
         this.getCommand("changeteam").setTabCompleter(completer); // Add tab completion to /changeteam
+        this.getCommand("settings").setExecutor(new SettingsCMD());
+        this.getCommand("settings").setTabCompleter(completer);
 
         Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.GREEN + "All commands registered!");
     }
