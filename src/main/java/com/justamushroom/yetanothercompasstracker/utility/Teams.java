@@ -111,4 +111,27 @@ public class Teams {
         }
         return closestPlr; // Return the closest target, will return BasePlayer if no other valid teammates are found
     }
+
+    //Get the distance of all players of matchTeam relative to basePlayer
+    public static HashMap<Player, Double> getDistanceToTeamPlayers(Team matchTeam, Player basePlayer) {
+        HashMap<Player, Double> players = new HashMap<>(); // Make the return HashMap
+
+        for (String plrName : matchTeam.getEntries()) { // Iterate over all entries in MmatchTeam
+            Player plr = Bukkit.getPlayer(plrName); // Convert the string to a Player
+            if (plr == null) continue; // Skip if non-existent
+
+            if (!plr.isOnline()) continue; // Skip if player is not online
+
+            double distance = basePlayer.getLocation().distance(plr.getLocation()); // Get distance to player
+
+            players.put(plr, distance); // Append to the return HashMap
+        }
+
+        return players; // Return the distances as a HashMap
+    }
+
+    // Could cause a NullPointerException!
+    public static HashMap<Player, Double> getDistanceToTeamPlayers(Player basePlayer) {
+        return getDistanceToTeamPlayers(getPlayerTeam(basePlayer), basePlayer);
+    }
 }
