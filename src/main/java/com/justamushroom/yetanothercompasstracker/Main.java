@@ -15,8 +15,11 @@ public class Main extends JavaPlugin {
 
     private void registerCommands()
     {
+        Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.YELLOW + "Registering commands...");
+
         this.getCommand("getcompass").setExecutor(new GetCompassCMD()); // Register /getcompass
-        Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.GREEN + "All Commands Registered!");
+
+        Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.GREEN + "All commands registered!");
     }
 
     private void loadConfig()
@@ -37,20 +40,26 @@ public class Main extends JavaPlugin {
 
         List<?> items = config.getList("teams.teamNames");
 
+        if (items.size() > 0) Bukkit.getLogger().info("[" + this.getName() + "] {Config} " + ChatColor.GOLD + "Found unregistered teams! Registering " + items.size() + " teams...");
+
         for (Object item : items) {
             
             if (Bukkit.getScoreboardManager().getMainScoreboard().getTeam(item.toString()) == null) {
 
                 // Register teams present in the config file but not in the scoreboard
-                Bukkit.getLogger().info("[" + this.getName() + "] {Config} Registering Team: " + item);
+                Bukkit.getLogger().info("[" + this.getName() + "] {Config} Registering team: " + item);
                 Bukkit.getScoreboardManager().getMainScoreboard().registerNewTeam(item.toString());
             }
         }
     }
 
     private void registerEvents() {
+        Bukkit.getLogger().info("[" + this.getName() + "] {Events} " + ChatColor.YELLOW + "Registering events...");
+
         // Register compass right-clicking
         Bukkit.getPluginManager().registerEvents(new CompassRightClickEvent(), this);
+
+        Bukkit.getLogger().info("[" + this.getName() + "] {Events} " + ChatColor.GREEN + "All events registered!");
     }
 
     @Override
