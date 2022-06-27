@@ -9,3 +9,8 @@ commands:
     description: Claim a tracking compass
     usage: /getcompass
     aliases: [gt, compass]
+
+  changeteam:
+    description: Change your tracking team
+    usage: /changeteam <New Team>
+    aliases: [ct, team]

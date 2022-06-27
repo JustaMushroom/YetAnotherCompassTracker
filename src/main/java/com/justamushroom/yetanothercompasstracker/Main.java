@@ -1,6 +1,6 @@
 package com.justamushroom.yetanothercompasstracker;
 
-import com.justamushroom.yetanothercompasstracker.commands.GetCompassCMD;
+import com.justamushroom.yetanothercompasstracker.commands.*;
 import com.justamushroom.yetanothercompasstracker.compass.CompassRightClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,6 +18,7 @@ public class Main extends JavaPlugin {
         Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.YELLOW + "Registering commands...");
 
         this.getCommand("getcompass").setExecutor(new GetCompassCMD()); // Register /getcompass
+        this.getCommand("changeteam").setExecutor(new TeamChangeCMD()); // Register /changeteam
 
         Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.GREEN + "All commands registered!");
     }
