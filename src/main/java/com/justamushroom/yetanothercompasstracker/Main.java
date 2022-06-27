@@ -1,6 +1,7 @@
 package com.justamushroom.yetanothercompasstracker;
 
 import com.justamushroom.yetanothercompasstracker.commands.GetCompassCMD;
+import com.justamushroom.yetanothercompasstracker.compass.CompassRightClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -47,11 +48,17 @@ public class Main extends JavaPlugin {
         }
     }
 
+    private void registerEvents() {
+        // Register compass right-clicking
+        Bukkit.getPluginManager().registerEvents(new CompassRightClickEvent(), this);
+    }
+
     @Override
     public void onEnable() {
         Bukkit.getLogger().info(ChatColor.YELLOW + "Setting up " + this.getName() + "...");
 
         registerCommands(); // Register commands
+        registerEvents(); // Register event listeners
         loadConfig(); // Load the config
         instance = this; // Ensure everything knows this is the plugin instance
 
