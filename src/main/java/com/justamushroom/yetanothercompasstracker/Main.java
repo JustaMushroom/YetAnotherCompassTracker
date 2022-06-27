@@ -6,6 +6,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
+
 public class Main extends JavaPlugin {
 
     public static Main instance; // Points to the current instance of the plugin
@@ -31,6 +33,18 @@ public class Main extends JavaPlugin {
 
         // Save any changes to the config
         this.saveConfig();
+
+        List<?> items = config.getList("teams.teamNames");
+
+        for (Object item : items) {
+            
+            if (Bukkit.getScoreboardManager().getMainScoreboard().getTeam(item.toString()) == null) {
+
+                // Register teams present in the config file but not in the scoreboard
+                Bukkit.getLogger().info("[" + this.getName() + "] {Config} Registering Team: " + item);
+                Bukkit.getScoreboardManager().getMainScoreboard().registerNewTeam(item.toString());
+            }
+        }
     }
 
     @Override
