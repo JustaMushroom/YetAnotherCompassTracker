@@ -17,8 +17,10 @@ public class Main extends JavaPlugin {
     {
         Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.YELLOW + "Registering commands...");
 
+        TabCompletion completer = new TabCompletion();
         this.getCommand("getcompass").setExecutor(new GetCompassCMD()); // Register /getcompass
         this.getCommand("changeteam").setExecutor(new TeamChangeCMD()); // Register /changeteam
+        this.getCommand("changeteam").setTabCompleter(completer); // Add tab completion to /changeteam
 
         Bukkit.getLogger().info("[" + this.getName() + "] {Commands} " + ChatColor.GREEN + "All commands registered!");
     }
