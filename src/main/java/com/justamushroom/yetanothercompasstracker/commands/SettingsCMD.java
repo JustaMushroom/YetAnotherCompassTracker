@@ -44,6 +44,7 @@ public class SettingsCMD implements CommandExecutor {
                     }
                     Bukkit.getScoreboardManager().getMainScoreboard().registerNewTeam(args[2]);
                     config.getStringList("teams.teamName").add(args[2]);
+                    sender.sendMessage(ChatColor.GREEN + "Team added sucessfully!");
                     break;
                 }
                 case "remove":
@@ -61,6 +62,7 @@ public class SettingsCMD implements CommandExecutor {
                     }
                     team.unregister();
                     config.getStringList("teams.teamName").remove(args[2]);
+                    sender.sendMessage(ChatColor.GREEN + "Team removed sucessfully!");
                     break;
                 }
                 case "list":
@@ -69,6 +71,7 @@ public class SettingsCMD implements CommandExecutor {
                     sender.sendMessage(String.join(",", config.getStringList("teams.teamName")));
                 }
             }
+            Main.instance.saveConfig();
         } else {
             switch (setting) {
                 case "enablecompasses":
@@ -90,7 +93,6 @@ public class SettingsCMD implements CommandExecutor {
             }
             Main.instance.saveConfig();
         }
-
         return true;
     }
 }
