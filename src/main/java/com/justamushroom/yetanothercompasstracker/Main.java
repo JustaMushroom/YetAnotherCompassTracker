@@ -41,7 +41,7 @@ public class Main extends JavaPlugin {
         loadConfig(); // Load the config
         instance = this; // Ensure everything knows this is the plugin instance
 
-        Bukkit.getLogger().info(ChatColor.GREEN + "Successfully started " + this.getName());
+        Bukkit.getLogger().info(ChatColor.GREEN + "Successfully started " + this.getName() + "!");
     }
 
     @Override
