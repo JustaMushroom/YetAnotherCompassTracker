@@ -63,6 +63,7 @@ public class Main extends JavaPlugin {
         // Register compass right-clicking
         Bukkit.getPluginManager().registerEvents(new CompassRightClickEvent(), this);
 
+        // Start action bar updates
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new UpdateActionBar(), 0L, 10L);
 
         Bukkit.getLogger().info("[" + this.getName() + "] {Events} " + ChatColor.GREEN + "All events registered!");
