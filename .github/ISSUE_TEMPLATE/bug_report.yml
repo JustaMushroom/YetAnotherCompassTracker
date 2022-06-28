@@ -17,7 +17,7 @@ body:
     id: log
     attributes:
       label: Logs
-      description: Please paste the contents of output.log here
+      description: Please paste the contents of your server log here. Please ensure there is no sensitive data in this log
     validations:
       required: true
   - type: checkboxes
