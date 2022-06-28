@@ -84,7 +84,7 @@ public class SettingsCMD implements CommandExecutor {
                 }
                 case "enableactionbar":
                 {
-                    config.set("compass.allowActionBarTracking", Boolean.parseBoolean(val1));
+                    config.set("teams.allowActionBarTracking", Boolean.parseBoolean(val1));
                     break;
                 }
                 case "allowteamswap":
