@@ -19,31 +19,33 @@ public class TabCompletion implements TabCompleter {
             if (arguments.length < 1) return null;
             return Lists.transform(Main.instance.getConfig().getList("teams.teamNames"), Functions.toStringFunction());
         } else if (cmd.getName().equalsIgnoreCase("settings")) {
-            if (arguments[0].equals("")) {
-                return new ArrayList<String>() {{
-                    add("teams");
-                    add("enableCompasses");
-                    add("enableActionbar");
-                    add("allowTeamSwap");
-                }};
-            } else if (arguments[1].equals("")) {
-                switch (arguments[0].toLowerCase()) {
-                    case "teams":
-                    {
-                        return new ArrayList<>() {{
-                            add("add");
-                            add("remove");
-                            add("list");
-                        }};
-                    }
-                    default:
-                    {
-                        return new ArrayList<>() {{
-                            add("true");
-                            add("false");
-                        }};
+            try {
+                if (arguments[0].equals("")) {
+                    return new ArrayList<String>() {{
+                        add("teams");
+                        add("enableCompasses");
+                        add("enableActionbar");
+                        add("allowTeamSwap");
+                    }};
+                } else if (arguments[1].equals("")) {
+                    switch (arguments[0].toLowerCase()) {
+                        case "teams": {
+                            return new ArrayList<>() {{
+                                add("add");
+                                add("remove");
+                                add("list");
+                            }};
+                        }
+                        default: {
+                            return new ArrayList<>() {{
+                                add("true");
+                                add("false");
+                            }};
+                        }
                     }
                 }
+            } catch (Exception e) {
+                //Do nothing
             }
         }
         return null;
