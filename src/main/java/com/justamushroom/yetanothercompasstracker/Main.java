@@ -2,6 +2,7 @@ package com.justamushroom.yetanothercompasstracker;
 
 import com.justamushroom.yetanothercompasstracker.commands.*;
 import com.justamushroom.yetanothercompasstracker.compass.CompassRightClickEvent;
+import com.justamushroom.yetanothercompasstracker.events.UpdateActionBar;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -61,6 +62,8 @@ public class Main extends JavaPlugin {
 
         // Register compass right-clicking
         Bukkit.getPluginManager().registerEvents(new CompassRightClickEvent(), this);
+
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new UpdateActionBar(), 0L, 10L);
 
         Bukkit.getLogger().info("[" + this.getName() + "] {Events} " + ChatColor.GREEN + "All events registered!");
     }
