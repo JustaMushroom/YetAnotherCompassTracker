@@ -24,7 +24,9 @@ public class TeamChangeCMD implements CommandExecutor {
 
                 String teamName = args[0];
 
-                if (teams.contains(teamName)) { // Check if the team actually exists
+                if (teamName.equalsIgnoreCase("None")) {
+                    Teams.removePlayerTeam(plr);
+                } else if (teams.contains(teamName)) { // Check if the team actually exists
 
                     Team targetTeam = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(teamName); // Get the team
                     Teams.changePlayerTeam(plr, targetTeam);
