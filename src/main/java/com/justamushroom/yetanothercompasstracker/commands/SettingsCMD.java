@@ -80,16 +80,19 @@ public class SettingsCMD implements CommandExecutor {
                 case "enablecompasses":
                 {
                     config.set("compass.allowRightClick", Boolean.parseBoolean(val1));
+                    sender.sendMessage(ChatColor.GREEN + "Compass Right-clicking was " + (Boolean.parseBoolean(val1)? "enabled" : "disabled") + "!");
                     break;
                 }
                 case "enableactionbar":
                 {
                     config.set("teams.allowActionBarTracking", Boolean.parseBoolean(val1));
+                    sender.sendMessage(ChatColor.GREEN + "Action bar tracking was " + (Boolean.parseBoolean(val1)? "enabled" : "disabled") + "!");
                     break;
                 }
                 case "allowteamswap":
                 {
                     config.set("commands.allowTeamSwap", Boolean.parseBoolean(val1));
+                    sender.sendMessage(ChatColor.GREEN + "Team Swapping was " + (Boolean.parseBoolean(val1)? "enabled" : "disabled") + "!");
                     broadcastTeamLockMessage(Boolean.parseBoolean(val1));
                     break;
                 }
