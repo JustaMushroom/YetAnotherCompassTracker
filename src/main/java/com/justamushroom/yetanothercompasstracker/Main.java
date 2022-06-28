@@ -2,13 +2,10 @@ package com.justamushroom.yetanothercompasstracker;
 
 import com.justamushroom.yetanothercompasstracker.commands.*;
 import com.justamushroom.yetanothercompasstracker.compass.CompassRightClickEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main extends JavaPlugin {
 

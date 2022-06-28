@@ -8,6 +8,8 @@ import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scoreboard.Team;
 
+import java.util.List;
+
 public class SettingsCMD implements CommandExecutor {
 
     private void broadcastTeamLockMessage(boolean enabled) {
@@ -32,7 +34,7 @@ public class SettingsCMD implements CommandExecutor {
         FileConfiguration config = Main.instance.getConfig();
 
         if (setting.equalsIgnoreCase("teams")) {
-            //TODO: Add team management
+            List<String> teams = config.getStringList("teams.teamName");
             switch (val1) {
                 case "add":
                 {
@@ -43,7 +45,8 @@ public class SettingsCMD implements CommandExecutor {
                         return true;
                     }
                     Bukkit.getScoreboardManager().getMainScoreboard().registerNewTeam(args[2]);
-                    config.getStringList("teams.teamName").add(args[2]);
+                    teams.add(args[2]);
+                    config.set("teams.teamNames", teams);
                     sender.sendMessage(ChatColor.GREEN + "Team added sucessfully!");
                     break;
                 }
@@ -61,17 +64,17 @@ public class SettingsCMD implements CommandExecutor {
                         return true;
                     }
                     team.unregister();
-                    config.getStringList("teams.teamName").remove(args[2]);
+                    teams.remove(args[2]);
+                    config.set("teams.teamNames", teams);
                     sender.sendMessage(ChatColor.GREEN + "Team removed sucessfully!");
                     break;
                 }
                 case "list":
                 {
                     sender.sendMessage("Here are all teams currently added");
-                    sender.sendMessage(String.join(",", config.getStringList("teams.teamName")));
+                    sender.sendMessage(String.join(",", teams));
                 }
             }
-            Main.instance.saveConfig();
         } else {
             switch (setting) {
                 case "enablecompasses":
@@ -86,13 +89,13 @@ public class SettingsCMD implements CommandExecutor {
                 }
                 case "allowteamswap":
                 {
-                    config.set("compass.allowTeamSwap", Boolean.parseBoolean(val1));
+                    config.set("commands.allowTeamSwap", Boolean.parseBoolean(val1));
                     broadcastTeamLockMessage(Boolean.parseBoolean(val1));
                     break;
                 }
             }
-            Main.instance.saveConfig();
         }
+        Main.instance.saveConfig();
         return true;
     }
 }
