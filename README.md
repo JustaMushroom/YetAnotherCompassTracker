@@ -3,6 +3,8 @@
 This is a simple plugin that allows players to track teammates through compasses  
 Teams are managed through the vanilla scoreboard system.
 
+**This Plugin is built for `Minecraft 1.18`, Other versions are not supported at this time**
+
 ## How to use
 ### Commands
 `/compass` - Gives the player a tracking compass  
