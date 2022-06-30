@@ -18,7 +18,7 @@ If Action bar tracking is enabled (Default: on) the distance to your closest tea
 **All tracking mechanics only work if the player is in a team registered by this plugin**
 
 ### Settings / Config Entries
-*Settings can be found at `/plugins/YetAnotherCompassTracker/config.yml`*
+*Settings can be found at `plugins/YetAnotherCompassTracker/config.yml`*
 
 - Allow Team Swapping: When disabled, the `changeteam` command is disabled, and it is not possible for users to change their team
 
