@@ -5,6 +5,8 @@ Teams are managed through the vanilla scoreboard system.
 
 **This Plugin is built for `Minecraft 1.18`, Other versions are not supported at this time**
 
+If you want to follow this plugin's development, consider giving it a ⭐star!
+
 ## How to use
 ### Commands
 `/compass` - Gives the player a tracking compass  
