@@ -19,7 +19,6 @@ public class SettingsCMD implements CommandExecutor {
             Bukkit.getServer().broadcastMessage("Team Changing is now " + ChatColor.BOLD + ChatColor.RED + "DISABLED" + ChatColor.RESET + "!");
         }
     }
-    // TODO: Implement Command Body w/ Autocomplete
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
